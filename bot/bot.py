@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from tcping import Ping
 import asyncio
 import os
 
@@ -39,10 +38,7 @@ async def resin(pesan, resin1:int, resin2:int):
     await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timelefthrs), int (timeleftmin)))
     
     while (True):
-        await asyncio.sleep(1)
-        ping = Ping("https://hazebot-discordbot.herokuapp.com/", 43, 60)
-        ping.ping(1)
-        await asyncio.sleep(timer-1)
+        await asyncio.sleep(timer)
         resin1=resin1+1
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
