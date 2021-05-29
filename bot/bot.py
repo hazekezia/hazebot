@@ -26,7 +26,7 @@ async def resin(pesan, resin1:int, resin2:int):
         await pesan.send("Sumpah ya. Lu mau ngetes bot gw atau gimana gan?")
         return
     elif (resin1<0 and resin2<0):
-        await pesan.send("Wtf? Resin ente minus gan?")
+        await pesan.send("Wtf? Resin ente minus gan? Atau mau ngajak berantem?")
         return
     elif (resin1<0):
         await pesan.send("Bro, tidak ada resin minus. Saya maklumin mungkin salah ketik.")
