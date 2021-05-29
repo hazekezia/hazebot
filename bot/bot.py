@@ -9,7 +9,11 @@ dctoken = os.getenv("DC_TOKEN")
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
-
+    
+@bot.command()
+async def command(ctx):
+    pass
+    
 @bot.command()
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
@@ -41,9 +45,6 @@ async def resin(pesan, resin1:int, resin2:int):
     while (True):
         await asyncio.sleep(timer)
         print(1)
-        @client.command()
-            async def command(ctx):
-            pass
         resin1=resin1+timer
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
