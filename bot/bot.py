@@ -1,23 +1,19 @@
 import discord
 from discord.ext import commands
+from tcping import Ping
 import asyncio
 import os
 
 bot = commands.Bot(command_prefix='!', description="Bot Resin")
-dctoken = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     
 @bot.command()
-async def command(ctx):
-    pass
-    
-@bot.command()
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
-    timer=60                           #480 detik = 8 menit
+    timer=1                           #480 detik = 8 menit
     minutes=(timer/60)                  #8 menit
     
     resingap=resin2-resin1              #Hitung resin2 dikurangi resin1
@@ -43,11 +39,13 @@ async def resin(pesan, resin1:int, resin2:int):
     await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timelefthrs), int (timeleftmin)))
     
     while (True):
-        await asyncio.sleep(timer)
-        print(1)
-        resin1=resin1+timer
+        await asyncio.sleep(1)
+        ping = Ping("https://hazebot-discordbot.herokuapp.com/", 43, 60)
+        ping.ping(1)
+        await asyncio.sleep(timer-1)
+        resin1=resin1+1
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
             break
 
-bot.run(dctoken)
+bot.run("ODQ3NjY1OTg2NjQzNDI3Mzg4.YLBYeA.ESV-Ks5a0g-m-ZYr3QKwardiMo8")
