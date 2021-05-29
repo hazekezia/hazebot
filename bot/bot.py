@@ -3,6 +3,7 @@ from discord.ext import commands
 import asyncio
 
 bot = commands.Bot(command_prefix='!', description="Bot Resin")
+dctoken = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -26,7 +27,7 @@ async def resin(pesan, resin1:int, resin2:int):
         await pesan.send("Sumpah ya. Lu mau ngetes bot gw atau gimana gan?")
         return
     elif (resin1<0 and resin2<0):
-        await pesan.send("Wtf? Resin ente minus gan? Atau mau ngajak berantem?")
+        await pesan.send("Wtf? Resin ente minus gan?")
         return
     elif (resin1<0):
         await pesan.send("Bro, tidak ada resin minus. Saya maklumin mungkin salah ketik.")
@@ -44,4 +45,4 @@ async def resin(pesan, resin1:int, resin2:int):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
             break
 
-bot.run('ODQ3NjY1OTg2NjQzNDI3Mzg4.YLBYeA.ESV-Ks5a0g-m-ZYr3QKwardiMo8')
+bot.run(dctoken)
