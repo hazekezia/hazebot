@@ -10,7 +10,7 @@ dctoken = os.getenv("DC_TOKEN")
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     
-while True:
+while (True):
     await asyncio.sleep(29)
     print(1)
 
