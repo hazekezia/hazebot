@@ -4,6 +4,7 @@ import asyncio
 import os
 
 bot = commands.Bot(command_prefix='!', description="Bot Resin")
+dctoken = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -47,4 +48,4 @@ async def resin(pesan, resin1:int, resin2:int):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
             break
 
-bot.run("ODQ3NjY1OTg2NjQzNDI3Mzg4.YLBYeA.ESV-Ks5a0g-m-ZYr3QKwardiMo8")
+bot.run(dctoken)
