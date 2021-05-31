@@ -42,6 +42,7 @@ async def resin(pesan, resin1:int, resin2:int):
         while (loop<=timer):
             await asyncio.sleep(1)
             await pesan.send("")
+            loop+=1
         resin1=resin1+1
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
