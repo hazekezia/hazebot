@@ -3,14 +3,14 @@ from discord.ext import commands
 import asyncio
 import os
 
-bot = commands.Bot(command_prefix='!', description="Bot Resin")
+bot = commands.Bot(command_prefix='!', description="hazeBot adalah sebuah Bot Discord yang digunakan untuk menghitung resin pada game Genshin Impact.")
 dctoken = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
     
-@bot.command()
+@bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
     timer=480                           #480 detik = 8 menit
