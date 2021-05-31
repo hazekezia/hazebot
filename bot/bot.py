@@ -12,7 +12,7 @@ async def on_ready():
 @bot.command()
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
-    timer=1                           #480 detik = 8 menit
+    timer=30                           #480 detik = 8 menit
     minutes=(timer/60)                  #8 menit
     
     resingap=resin2-resin1              #Hitung resin2 dikurangi resin1
@@ -38,7 +38,10 @@ async def resin(pesan, resin1:int, resin2:int):
     await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timelefthrs), int (timeleftmin)))
     
     while (True):
-        await asyncio.sleep(timer)
+        loop=0
+        while (loop<=timer):
+            await asyncio.sleep(1)
+            await pesan.send("")
         resin1=resin1+1
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
