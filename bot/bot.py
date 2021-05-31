@@ -8,7 +8,7 @@ dctoken = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
-    print(f'{bot.user} has connected to Discord!')
+    print("{} is online!".format(bot.user))
     
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
