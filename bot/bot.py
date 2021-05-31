@@ -12,7 +12,7 @@ async def on_ready():
 @bot.command()
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
-    timer=30                           #480 detik = 8 menit
+    timer=480                           #480 detik = 8 menit
     minutes=(timer/60)                  #8 menit
     
     resingap=resin2-resin1              #Hitung resin2 dikurangi resin1
