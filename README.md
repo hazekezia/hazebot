@@ -1,5 +1,6 @@
 # hazeBot
-Diciptakan dengan tujuan mengurangi rasa adiktif ingin login Genshin Impact secara terus menerus.
+hazeBot adalah sebuah Bot Discord untuk para pemain game Genshin Impact.
+###### Update : 1 Jun 2021
 
 ## Arguments 
 - !resin - perintah untuk melakukan timer pengisian ulang resin.
