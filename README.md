@@ -10,4 +10,4 @@ Diciptakan dengan tujuan mengurangi rasa adiktif ingin login Genshin Impact seca
 - Library `Discord.py`
 
 ## Credits
-https://github.com/Rapptz/discord.py
+https://discordpy.readthedocs.io/en/latest/
