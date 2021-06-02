@@ -28,7 +28,7 @@ import asyncio
 import os
 
 bot = commands.Bot(command_prefix='!', description="hazeBot adalah sebuah Bot Discord yang digunakan untuk menghitung resin pada game Genshin Impact.")
-dctoken = os.getenv("DC_TOKEN")
+DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
@@ -37,14 +37,13 @@ async def on_ready():
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
     #Inisialisasi Waktu
-    timer=480                           #480 detik = 8 menit
-    minutes=(timer/60)                  #8 menit
+    timer = 480                              #480 detik = 8 menit
+
+    resinGap = resin2-resin1                 #Hitung resin2 dikurangi resin1
+    totalMinutesResin = (timer/60)*resinGap  #Total menit yang dibutuhkan agar resin penuh
     
-    resingap=resin2-resin1              #Hitung resin2 dikurangi resin1
-    totalminutesresin=minutes*resingap  #Total menit yang dibutuhkan agar resin penuh
-    
-    timelefthrs=totalminutesresin/60    #Hitung jam resin
-    timeleftmin=totalminutesresin%60    #Hitung menit resin
+    timeLeftHrs = totalMinutesResin/60    #Hitung jam resin
+    timeLeftMin = totalMinutesResin%60    #Hitung menit resin
 
     #Discord
     if (resin1<0 and resin2>160):
@@ -60,16 +59,16 @@ async def resin(pesan, resin1:int, resin2:int):
         await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
         return
         
-    await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timelefthrs), int (timeleftmin)))
+    await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timeLeftHrs), int (timeLeftMin)))
     
     while (True):
-        loop=0
-        while (loop<=timer):
+        loop = 0
+        while (loop <= timer):
             await asyncio.sleep(1)
-            loop+=1
-        resin1+=1
+            loop += 1
+        resin1 += 1
         if(resin1==resin2):
             await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
             break
 
-bot.run(dctoken)
+bot.run(DCTOKEN)
