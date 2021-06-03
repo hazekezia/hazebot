@@ -25,6 +25,7 @@ SOFTWARE.
 import discord
 import asyncio
 import os
+from pytz import timezone
 from datetime import datetime
 from discord.ext import commands
 from discord.ext import tasks
@@ -41,12 +42,12 @@ async def resin(pesan, resin1:int, resin2:int):
 
     # Atur Jam (Hours) dan Menit (Minutes)
     TimeDate = datetime.now()
+    Asia = TimeDate.astimezone(timezone("Asia/Jakarta"))
 
-    Hours = TimeDate.strftime("%H")
+    Hours = Asia.strftime("%H")
     Hours = int(Hours) #Convert ke integer
-    Hours += 7 #easy fix for smth ;)
 
-    Minutes = TimeDate.strftime("%M")
+    Minutes = Asia.strftime("%M")
     Minutes = int(Minutes) #Convert ke integer
 
     #Inisialisasi Waktu
@@ -62,7 +63,7 @@ async def resin(pesan, resin1:int, resin2:int):
     
     #Set Hours
     timeHrs = timeLeftHrs + Hours
-    if (timeHrs > 24):
+    if (timeHrs >= 24):
         timeHrs = timeHrs%24
         if (timeHrs < 10):
             timeHrs = str(timeHrs)
@@ -70,8 +71,9 @@ async def resin(pesan, resin1:int, resin2:int):
 
     #Set Minutes
     timeMin = timeLeftMin + Minutes
-    if (timeMin > 60):
+    if (timeMin >= 60):
         timeMin = timeMin%60
+        timeHrs = int(timeHrs)+1
         if (timeMin < 10):
             timeMin = str(timeMin)
             timeMin = "0" + timeMin
