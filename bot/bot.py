@@ -42,7 +42,7 @@ Hours = TimeDate.strftime("%H")
 Hours = int(Hours) #Convert ke integer
 
 Minutes = TimeDate.strftime("%M")
-Minutes = int(Hours) #Convert ke integer
+Minutes = int(Minutes) #Convert ke integer
     
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
