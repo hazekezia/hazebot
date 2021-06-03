@@ -40,7 +40,7 @@ TimeDate = datetime.now()
 
 Hours = TimeDate.strftime("%H")
 Hours = int(Hours) #Convert ke integer
-Hours += 8 #easy fix for smth ;)
+Hours += 7 #easy fix for smth ;)
 
 Minutes = TimeDate.strftime("%M")
 Minutes = int(Minutes) #Convert ke integer
