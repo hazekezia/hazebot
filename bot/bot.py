@@ -35,19 +35,20 @@ DCTOKEN = os.getenv("DC_TOKEN")
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
-
-# Atur Jam (Hours) dan Menit (Minutes)
-TimeDate = datetime.now()
-
-Hours = TimeDate.strftime("%H")
-Hours = int(Hours) #Convert ke integer
-Hours += 7 #easy fix for smth ;)
-
-Minutes = TimeDate.strftime("%M")
-Minutes = int(Minutes) #Convert ke integer
     
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
+
+    # Atur Jam (Hours) dan Menit (Minutes)
+    TimeDate = datetime.now()
+
+    Hours = TimeDate.strftime("%H")
+    Hours = int(Hours) #Convert ke integer
+    Hours += 7 #easy fix for smth ;)
+
+    Minutes = TimeDate.strftime("%M")
+    Minutes = int(Minutes) #Convert ke integer
+
     #Inisialisasi Waktu
     timer = 480                              #480 detik = 8 menit
 
