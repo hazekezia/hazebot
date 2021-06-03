@@ -23,9 +23,10 @@ SOFTWARE.
 """
 
 import discord
-from discord.ext import commands
 import asyncio
 import os
+from datetime import datetime
+from discord.ext import commands
 
 bot = commands.Bot(command_prefix='!', description="hazeBot adalah sebuah Bot Discord yang digunakan untuk menghitung resin pada game Genshin Impact.")
 DCTOKEN = os.getenv("DC_TOKEN")
@@ -33,6 +34,15 @@ DCTOKEN = os.getenv("DC_TOKEN")
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
+
+# Atur Jam (Hours) dan Menit (Minutes)
+TimeDate = datetime.now()
+
+Hours = TimeDate.strftime("%H")
+Hours = int(Hours) #Convert ke integer
+
+Minutes = TimeDate.strftime("%M")
+Minutes = int(Hours) #Convert ke integer
     
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
 async def resin(pesan, resin1:int, resin2:int):
@@ -43,9 +53,27 @@ async def resin(pesan, resin1:int, resin2:int):
     totalMinutesResin = (timer/60)*resinGap  #Total menit yang dibutuhkan agar resin penuh
     
     timeLeftHrs = totalMinutesResin/60    #Hitung jam resin
+    timeLeftHrs = int(timeLeftHrs)
     timeLeftMin = totalMinutesResin%60    #Hitung menit resin
+    timeLeftMin = int(timeLeftMin)
+    
+    #Set Hours
+    timeHrs = timeLeftHrs + Hours
+    if (timeHrs>24):
+        timeHrs=timeHrs%24
+        if (timeHrs<10):
+            timeHrs = str(timeHrs)
+            timeHrs = "0"+timeHrs
 
-    #Discord
+    #Set Minutes
+    timeMin = timeLeftMin + Minutes
+    if (timeMin>60):
+        timeMin=timeMin%60
+        if (timeMin<10):
+            timeMin = str(timeMin)
+            timeMin = "0"+timeMin
+
+    #Resin Check
     if (resin1<0 and resin2>160):
         await pesan.send("Sumpah ya. Lu mau ngetes bot gw atau gimana gan?")
         return
@@ -59,7 +87,8 @@ async def resin(pesan, resin1:int, resin2:int):
         await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
         return
         
-    await pesan.send("Resin {} sebanyak {}. Akan diingatkan saat resin mencapai {}. (**Time: {} hours {} minutes**).".format(pesan.author.mention, resin1,resin2, int (timeLeftHrs), int (timeLeftMin)))
+    await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1,resin2))
+    await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
     
     while (True):
         loop = 0
