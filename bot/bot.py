@@ -40,6 +40,7 @@ TimeDate = datetime.now()
 
 Hours = TimeDate.strftime("%H")
 Hours = int(Hours) #Convert ke integer
+Hours += 7 #easy fix for smth ;)
 
 Minutes = TimeDate.strftime("%M")
 Minutes = int(Minutes) #Convert ke integer
@@ -59,19 +60,19 @@ async def resin(pesan, resin1:int, resin2:int):
     
     #Set Hours
     timeHrs = timeLeftHrs + Hours
-    if (timeHrs>24):
-        timeHrs=timeHrs%24
-        if (timeHrs<10):
+    if (timeHrs > 24):
+        timeHrs = timeHrs%24
+        if (timeHrs < 10):
             timeHrs = str(timeHrs)
-            timeHrs = "0"+timeHrs
+            timeHrs = "0" + timeHrs
 
     #Set Minutes
     timeMin = timeLeftMin + Minutes
-    if (timeMin>60):
-        timeMin=timeMin%60
-        if (timeMin<10):
+    if (timeMin > 60):
+        timeMin = timeMin%60
+        if (timeMin < 10):
             timeMin = str(timeMin)
-            timeMin = "0"+timeMin
+            timeMin = "0" + timeMin
 
     #Resin Check
     if (resin1<0 and resin2>160):
@@ -87,7 +88,7 @@ async def resin(pesan, resin1:int, resin2:int):
         await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
         return
         
-    await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1,resin2))
+    await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
     await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
     
     while (True):
