@@ -94,7 +94,7 @@ async def resin(pesan, resin1:int, resin2:int):
     await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
     
     global hutao #set global tasks
-    @tasks.loop()
+    @tasks.loop(count=1)
     async def hutao(pesan, resin1:int, resin2:int):
         while (True):
             loop = 0
