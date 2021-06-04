@@ -10,7 +10,7 @@ hazeBot adalah sebuah Bot Discord untuk para pemain game Genshin Impact.
 
 ## Requirements
 - Runtime `Python 3.8.10`
-- Library `Discord.py`
+- Library `Discord.py`, `pytz`
 
 ## Credits
 https://discordpy.readthedocs.io/en/latest/
