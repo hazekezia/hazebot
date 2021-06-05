@@ -6,7 +6,8 @@ hazeBot adalah sebuah Bot Discord untuk para pemain game Genshin Impact.
 
 ## Arguments 
 - !resin - perintah untuk melakukan timer pengisian ulang resin.
-  - Example : !resin `<current resin>` `<desired resin>`
+  - !resin `<current resin>` `<desired resin>`
+  - For cancel: !cancelresin
 
 ## Requirements
 - Runtime `Python 3.8.10`
