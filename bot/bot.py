@@ -27,8 +27,7 @@ import asyncio
 import os
 from pytz import timezone
 from datetime import datetime
-from discord.ext import commands
-from discord.ext import tasks
+from discord.ext import commands, tasks
 
 bot = commands.Bot(command_prefix='!', description="hazeBot adalah sebuah Bot Discord yang digunakan untuk menghitung resin pada game Genshin Impact.")
 DCTOKEN = os.getenv("DC_TOKEN")
@@ -95,9 +94,10 @@ async def resin(pesan, resin1:int, resin2:int):
     await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
     await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
     
-    global hutao #set global tasks
+    #Set Tasks
+    global eula
     @tasks.loop(count=1)
-    async def hutao(pesan, resin1:int, resin2:int):
+    async def eula(pesan, resin1:int, resin2:int):
         while (True):
             loop = 0
             while (loop <= timer):
@@ -108,11 +108,11 @@ async def resin(pesan, resin1:int, resin2:int):
                 await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
                 break
     
-    hutao.start(pesan, resin1, resin2)
+    eula.start(pesan, resin1, resin2)
     
-@bot.command()
-async def cancelresin(msg):
-    hutao.cancel()
-    await msg.send("Timer resin telah dibatalkan!")
+#@bot.command()
+#async def cancelresin(msg):
+#    eula.cancel()
+#    await msg.send("Timer resin telah dibatalkan!")
 
 bot.run(DCTOKEN)
