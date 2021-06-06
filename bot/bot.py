@@ -49,11 +49,8 @@ async def resin(pesan, resin1=None, resin2=None):
         TimeDate = datetime.now()
         Asia = TimeDate.astimezone(timezone("Asia/Jakarta"))
 
-        Hours = Asia.strftime("%H")
-        Hours = int(Hours) #Convert ke integer
-
-        Minutes = Asia.strftime("%M")
-        Minutes = int(Minutes) #Convert ke integer
+        Hours = int(Asia.strftime("%H"))
+        Minutes = int(Asia.strftime("%M"))
 
         #Inisialisasi Waktu
         timer = 480                              #480 detik = 8 menit
@@ -61,10 +58,8 @@ async def resin(pesan, resin1=None, resin2=None):
         resinGap = resin2-resin1                 #Hitung resin2 dikurangi resin1
         totalMinutesResin = (timer/60)*resinGap  #Total menit yang dibutuhkan agar resin penuh
         
-        timeLeftHrs = totalMinutesResin/60    #Hitung jam resin
-        timeLeftHrs = int(timeLeftHrs)
-        timeLeftMin = totalMinutesResin%60    #Hitung menit resin
-        timeLeftMin = int(timeLeftMin)
+        timeLeftHrs = int(totalMinutesResin/60)    #Hitung jam resin
+        timeLeftMin = int(totalMinutesResin%60)    #Hitung menit resin
         
         #Set Hours
         timeHrs = timeLeftHrs + Hours
