@@ -91,6 +91,9 @@ async def resin(pesan, resin1=None, resin2=None):
         elif(resin2>160):
             await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
             return
+        elif(resin1>resin2):
+            await pesan.send("Yang bener aja bro? Resinnya ngurang gitu? Format: !resin <current resin> <desired resin>")
+            return
             
         await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
         await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
