@@ -37,78 +37,84 @@ async def on_ready():
     print("{} is online!".format(bot.user))
     
 @bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
-async def resin(pesan, resin1:int, resin2:int):
-
-    # Atur Jam (Hours) dan Menit (Minutes)
-    TimeDate = datetime.now()
-    Asia = TimeDate.astimezone(timezone("Asia/Jakarta"))
-
-    Hours = Asia.strftime("%H")
-    Hours = int(Hours) #Convert ke integer
-
-    Minutes = Asia.strftime("%M")
-    Minutes = int(Minutes) #Convert ke integer
-
-    #Inisialisasi Waktu
-    timer = 480                              #480 detik = 8 menit
-
-    resinGap = resin2-resin1                 #Hitung resin2 dikurangi resin1
-    totalMinutesResin = (timer/60)*resinGap  #Total menit yang dibutuhkan agar resin penuh
-    
-    timeLeftHrs = totalMinutesResin/60    #Hitung jam resin
-    timeLeftHrs = int(timeLeftHrs)
-    timeLeftMin = totalMinutesResin%60    #Hitung menit resin
-    timeLeftMin = int(timeLeftMin)
-    
-    #Set Hours
-    timeHrs = timeLeftHrs + Hours
-    if (timeHrs >= 24):
-        timeHrs = timeHrs%24
-        if (timeHrs < 10):
-            timeHrs = str(timeHrs)
-            timeHrs = "0" + timeHrs
-
-    #Set Minutes
-    timeMin = timeLeftMin + Minutes
-    if (timeMin >= 60):
-        timeMin = timeMin%60
-        timeHrs = int(timeHrs)+1
-        if (timeMin < 10):
-            timeMin = str(timeMin)
-            timeMin = "0" + timeMin
-
-    #Resin Check
-    if (resin1<0 and resin2>160):
-        await pesan.send("Sumpah ya. Lu mau ngetes bot gw atau gimana gan?")
+async def resin(pesan, resin1=None, resin2=None):
+    if (resin1==None or resin2==None):
+        await pesan.send("Masukkan resin sesuai dengan format!")
         return
-    elif (resin1<0 and resin2<0):
-        await pesan.send("Wtf? Resin ente minus gan?")
-        return
-    elif (resin1<0):
-        await pesan.send("Bro, tidak ada resin minus. Saya maklumin mungkin salah ketik.")
-        return
-    elif(resin2>160):
-        await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
-        return
+    else:
+        resin1 = int(resin1)
+        resin2 = int(resin2)
+
+        # Atur Jam (Hours) dan Menit (Minutes)
+        TimeDate = datetime.now()
+        Asia = TimeDate.astimezone(timezone("Asia/Jakarta"))
+
+        Hours = Asia.strftime("%H")
+        Hours = int(Hours) #Convert ke integer
+
+        Minutes = Asia.strftime("%M")
+        Minutes = int(Minutes) #Convert ke integer
+
+        #Inisialisasi Waktu
+        timer = 480                              #480 detik = 8 menit
+
+        resinGap = resin2-resin1                 #Hitung resin2 dikurangi resin1
+        totalMinutesResin = (timer/60)*resinGap  #Total menit yang dibutuhkan agar resin penuh
         
-    await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
-    await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
-    
-    #Set Tasks
-    global eula
-    @tasks.loop(count=1)
-    async def eula(pesan, resin1:int, resin2:int):
-        while (True):
-            loop = 0
-            while (loop <= timer):
-                await asyncio.sleep(1)
-                loop += 1
-            resin1 += 1
-            if(resin1==resin2):
-                await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
-                break
-    
-    eula.start(pesan, resin1, resin2)
+        timeLeftHrs = totalMinutesResin/60    #Hitung jam resin
+        timeLeftHrs = int(timeLeftHrs)
+        timeLeftMin = totalMinutesResin%60    #Hitung menit resin
+        timeLeftMin = int(timeLeftMin)
+        
+        #Set Hours
+        timeHrs = timeLeftHrs + Hours
+        if (timeHrs >= 24):
+            timeHrs = timeHrs%24
+            if (timeHrs < 10):
+                timeHrs = str(timeHrs)
+                timeHrs = "0" + timeHrs
+
+        #Set Minutes
+        timeMin = timeLeftMin + Minutes
+        if (timeMin >= 60):
+            timeMin = timeMin%60
+            timeHrs = int(timeHrs)+1
+            if (timeMin < 10):
+                timeMin = str(timeMin)
+                timeMin = "0" + timeMin
+
+        #Resin Check
+        if (resin1<0 and resin2>160):
+            await pesan.send("Sumpah ya. Lu mau ngetes bot gw atau gimana gan?")
+            return
+        elif (resin1<0 and resin2<0):
+            await pesan.send("Wtf? Resin ente minus gan?")
+            return
+        elif (resin1<0):
+            await pesan.send("Bro, tidak ada resin minus. Saya maklumin mungkin salah ketik.")
+            return
+        elif(resin2>160):
+            await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
+            return
+            
+        await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
+        await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
+        
+        #Set Tasks
+        global eula
+        @tasks.loop(count=1)
+        async def eula(pesan, resin1:int, resin2:int):
+            while (True):
+                loop = 0
+                while (loop <= timer):
+                    await asyncio.sleep(1)
+                    loop += 1
+                resin1 += 1
+                if(resin1==resin2):
+                    await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
+                    break
+        
+        eula.start(pesan, resin1, resin2)
     
 #@bot.command()
 #async def cancelresin(msg):
