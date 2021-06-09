@@ -98,7 +98,7 @@ async def resin(pesan, resin1=None, resin2=None):
             await pesan.send("Bro, masa resin nya sama sih?")
             return
             
-        await pesan.send("Resin {} sekarang adalah {}. Resin kamu akan berjumlah {} Pada jam **{}:{} WIB** - **{} hours {} minutes**".format(pesan.author.mention, resin1, resin2, timeHrs, timeMin, timeLeftHrs, timeLeftMin))
+        await pesan.send("Resin {} sekarang adalah {}. Resin kamu akan berjumlah {} pada jam **{}:{} WIB** - **{} hours {} minutes**".format(pesan.author.mention, resin1, resin2, timeHrs, timeMin, timeLeftHrs, timeLeftMin))
         
         #ResinTimer.py
         """
