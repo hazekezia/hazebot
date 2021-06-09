@@ -101,21 +101,15 @@ async def resin(pesan, resin1=None, resin2=None):
         await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
         await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
         
-        #Set Tasks
-        global eula
-        @tasks.loop(count=1)
-        async def eula(pesan, resin1:int, resin2:int):
-            while (True):
-                loop = 0
-                while (loop <= timer):
-                    await asyncio.sleep(1)
-                    loop += 1
-                resin1 += 1
-                if(resin1==resin2):
-                    await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
-                    break
-        
-        eula.start(pesan, resin1, resin2)
+        while (True):
+            loop = 0
+            while (loop <= timer):
+                await asyncio.sleep(1)
+                loop += 1
+            resin1 += 1
+            if(resin1==resin2):
+                await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
+                break
     
 #@bot.command()
 #async def cancelresin(msg):
