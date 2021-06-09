@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2021 Jonathan Sitohang
+Copyright (c) 2021 hazekezia
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -98,9 +98,10 @@ async def resin(pesan, resin1=None, resin2=None):
             await pesan.send("Bro, masa resin nya sama sih?")
             return
             
-        await pesan.send("Resin {} sekarang adalah {}. Kamu akan diingatkan saat resin mencapai {}.".format(pesan.author.mention, resin1, resin2))
-        await pesan.send("Time: **{}:{}** - **{} hours {} minutes**".format(timeHrs, timeMin, timeLeftHrs, timeLeftMin))
+        await pesan.send("Resin {} sekarang adalah {}. Resin kamu akan berjumlah {} Pada jam **{}:{} WIB** - **{} hours {} minutes**".format(pesan.author.mention, resin1, resin2, timeHrs, timeMin, timeLeftHrs, timeLeftMin))
         
+        #ResinTimer.py
+        """
         while (True):
             loop = 0
             while (loop <= timer):
@@ -110,10 +111,14 @@ async def resin(pesan, resin1=None, resin2=None):
             if(resin1==resin2):
                 await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
                 break
-    
-#@bot.command()
-#async def cancelresin(msg):
-#    eula.cancel()
-#    await msg.send("Timer resin telah dibatalkan!")
+        """
+
+#ResinTimerCancel.py
+"""
+@bot.command()
+async def cancelresin(msg):
+    eula.cancel()
+    await msg.send("Timer resin telah dibatalkan!")
+"""
 
 bot.run(DCTOKEN)
