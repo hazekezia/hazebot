@@ -98,10 +98,9 @@ async def resin(pesan, resin1=None, resin2=None):
             await pesan.send("Bro, masa resin nya sama sih?")
             return
             
-        await pesan.send("Resin {} sekarang adalah {}. Resin kamu akan berjumlah {} pada jam **{}:{} WIB** - **{} hours {} minutes**".format(pesan.author.mention, resin1, resin2, timeHrs, timeMin, timeLeftHrs, timeLeftMin))
+        await pesan.send("{}'s resin now is {}. You will be remind when the resin reaches {} on **{}:{} WIB** - **{} hours {} minutes**".format(pesan.author.mention, resin1, resin2, timeHrs, timeMin, timeLeftHrs, timeLeftMin))
         
         #ResinTimer.py
-        """
         while (True):
             loop = 0
             while (loop <= timer):
@@ -111,7 +110,6 @@ async def resin(pesan, resin1=None, resin2=None):
             if(resin1==resin2):
                 await pesan.send("Halo {}, resin kamu menjadi {}.".format(pesan.author.mention, resin1))
                 break
-        """
 
 #ResinTimerCancel.py
 """
