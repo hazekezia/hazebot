@@ -30,14 +30,18 @@ Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
 
 @bot.command(brief="Command showing weapon description")
 async def weapon(pesan, weapon):
+    #Lower Case
     Weapon = weapon.lower()
     WeaponList = requests.get("https://api.genshin.dev/weapons")
     WeaponList = WeaponList.json()
+
+    #Check Weapon Array
     for CheckList in WeaponList:
         if Weapon in CheckList:
             Weapon = CheckList
             break
     
+    #Weapon Check
     WeaponListRaw = requests.get("https://api.genshin.dev/weapons/{}".format(Weapon))
     JSONWeapon = WeaponListRaw.json()
 
@@ -48,7 +52,7 @@ async def weapon(pesan, weapon):
     Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
     Show.set_thumbnail(url="https://api.genshin.dev/weapons/{}/icon".format(Weapon))
     Show.add_field(name="Type", value=JSONWeapon["type"])
-    Show.add_field(name="Base ATK", value=JSONWeapon["baseAttack"])
+    Show.add_field(name="Base Attack", value=JSONWeapon["baseAttack"])
     Show.add_field(name="Substat", value=JSONWeapon["subStat"])
     Show.add_field(name=JSONWeapon["passiveName"], value=JSONWeapon["passiveDesc"], inline=False)
     Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
