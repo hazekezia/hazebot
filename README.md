@@ -11,10 +11,13 @@ Project ini akan *pause progress* apabila ada event besar.
 ## Arguments 
 - !resin - perintah untuk melakukan timer pengisian ulang resin.
   - !resin `<current resin>` `<desired resin>`
+- !weapon - perintah untuk menampilkan deskripsi senjata
+  - !weapon `<weapon name>`
 
 ## Requirements
 - Runtime `Python 3.8.10`
-- Library `Discord.py`, `pytz`
+- Library `Discord.py`, `pytz`, `requests`
 
 ## Credits
 https://discordpy.readthedocs.io/en/latest/
+https://genshin.dev/ - for API (**api.genshin.dev**)
