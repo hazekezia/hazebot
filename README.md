@@ -19,5 +19,5 @@ Project ini akan *pause progress* apabila ada event besar.
 - Library `Discord.py`, `pytz`, `requests`
 
 ## Credits
-https://discordpy.readthedocs.io/en/latest/
-https://genshin.dev/ - for API (**api.genshin.dev**)
+- https://discordpy.readthedocs.io/en/latest/
+- https://genshin.dev/ - for API (**api.genshin.dev**)
