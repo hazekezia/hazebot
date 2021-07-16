@@ -30,6 +30,9 @@ Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
 
 @bot.command(brief="Command showing weapon description")
 async def weapon(pesan, weapon):
+    #Colors for rarity
+    Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
+
     #Lower Case
     Weapon = weapon.lower()
     WeaponList = requests.get("https://api.genshin.dev/weapons")
@@ -45,10 +48,12 @@ async def weapon(pesan, weapon):
     WeaponListRaw = requests.get("https://api.genshin.dev/weapons/{}".format(Weapon))
     JSONWeapon = WeaponListRaw.json()
 
+    #Initialization
     Name = JSONWeapon["name"]
     Descriptons = "".join([":star:" for i in range(0, JSONWeapon["rarity"])])
     RarityColors = Colors[JSONWeapon["rarity"]]
     
+    #Print
     Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
     Show.set_thumbnail(url="https://api.genshin.dev/weapons/{}/icon".format(Weapon))
     Show.add_field(name="Type", value=JSONWeapon["type"])
@@ -57,5 +62,6 @@ async def weapon(pesan, weapon):
     Show.add_field(name=JSONWeapon["passiveName"], value=JSONWeapon["passiveDesc"], inline=False)
     Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
 
+    #Send
     await pesan.send(embed=Show)
 """
