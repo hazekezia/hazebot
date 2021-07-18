@@ -28,14 +28,15 @@ from pytz import timezone
 from datetime import datetime
 from discord.ext import commands, tasks
 
-bot = commands.Bot(command_prefix='!', description="hazeBot adalah sebuah Bot Discord yang digunakan untuk menghitung resin pada game Genshin Impact.")
+bot = commands.Bot(command_prefix='!', description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
-    
-@bot.command(brief="Perintah untuk melakukan pengingat pada resin.")
+
+#ResinTimer.py    
+@bot.command(brief="Commmand to set resin timer")
 async def resin(pesan, resin1=None, resin2=None):
     if (resin1==None or resin2==None):
         await pesan.send("Masukkan resin sesuai dengan format!")
