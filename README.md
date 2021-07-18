@@ -9,10 +9,14 @@ Project ini akan *pause progress* apabila ada event besar.
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
 
 ## Arguments 
-- !resin - perintah untuk melakukan timer pengisian ulang resin.
-  - !resin `<current resin>` `<desired resin>`
+- !artifacts - perintah untuk menampilkan deskripsi artefak
+  - !artifacts `<artifacts name>`
 - !weapon - perintah untuk menampilkan deskripsi senjata
   - !weapon `<weapon name>`
+
+#### Under Development (Still broken, *sometimes*)
+- !resin - perintah untuk melakukan timer pengisian ulang resin.
+  - !resin `<current resin>` `<desired resin>`
 
 ## Requirements
 - Runtime `Python 3.8.10`
