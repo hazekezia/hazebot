@@ -56,7 +56,7 @@ async def artifacts(pesan, artifacts):
     Show.set_thumbnail(url="https://api.genshin.dev/artifacts/{}/flower-of-life".format(Artifacts))
     Show.add_field(name="2-Piece Bonus", value=JSONArtifacts["2-piece_bonus"], inline=False)
     Show.add_field(name="4-Piece Bonus", value=JSONArtifacts["4-piece_bonus"], inline=False)
-    Show.set_footer(text="Credits https://genshin.dev/)
+    Show.set_footer(text="Credits https://genshin.dev/")
 
     #Send
     await pesan.send(embed=Show)
