@@ -156,4 +156,40 @@ async def weapon(pesan, weapon):
     #Send
     await pesan.send(embed=Show)
 
+#ArtifactsDesc.py
+@bot.command(brief="Command showing artifacts description")
+async def artifacts(pesan, artifacts):
+    #Colors for rarity
+    Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
+
+    #Lower Case
+    Artifacts = artifacts.lower()
+    ArtifactsList = requests.get("https://api.genshin.dev/artifacts")
+    ArtifactsList = ArtifactsList.json()
+
+    #Check Artifacts Array
+    for CheckList in ArtifactsList:
+        if Artifacts in CheckList:
+            Artifacts = CheckList
+            break
+    
+    #Artifacts Check
+    ArtifactsListRaw = requests.get("https://api.genshin.dev/artifacts/{}".format(Artifacts))
+    JSONArtifacts = ArtifactsListRaw.json()
+
+    #Initialization
+    Name = JSONArtifacts["name"]
+    Descriptons = "Rarity Max : " + "".join([":star:" for i in range(0, JSONArtifacts["max_rarity"])])
+    RarityColors = Colors[JSONArtifacts["max_rarity"]]
+    
+    #Print
+    Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+    Show.set_thumbnail(url="https://api.genshin.dev/artifacts/{}/flower-of-life".format(Artifacts))
+    Show.add_field(name="2-Piece Bonus", value=JSONArtifacts["2-piece_bonus"], inline=False)
+    Show.add_field(name="4-Piece Bonus", value=JSONArtifacts["4-piece_bonus"], inline=False)
+    Show.set_footer(text="Credits https://genshin.dev/")
+
+    #Send
+    await pesan.send(embed=Show)
+
 bot.run(DCTOKEN)
