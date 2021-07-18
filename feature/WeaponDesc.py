@@ -61,6 +61,7 @@ async def weapon(pesan, weapon):
     Show.add_field(name="Substat", value=JSONWeapon["subStat"])
     Show.add_field(name=JSONWeapon["passiveName"], value=JSONWeapon["passiveDesc"], inline=False)
     Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
+    Show.set_footer(text="Credits https://genshin.dev/)
 
     #Send
     await pesan.send(embed=Show)
