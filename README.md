@@ -25,3 +25,4 @@ Project ini akan *pause progress* apabila ada event besar.
 ## Credits
 - https://discordpy.readthedocs.io/en/latest/
 - https://genshin.dev/ - for API (**api.genshin.dev**)
+- Someone :sparkling_heart:
