@@ -111,14 +111,6 @@ async def resin(pesan, resin1=None, resin2=None):
                 await pesan.send("Hello {}, your resin now is **{}**. Make sure to spend it!".format(pesan.author.mention, resin1))
                 break
 
-#ResinTimerCancel.py
-"""
-@bot.command()
-async def cancelresin(msg):
-    eula.cancel()
-    await msg.send("Timer resin telah dibatalkan!")
-"""
-
 #WeaponDesc.py
 @bot.command(brief="Command showing weapon description")
 async def weapon(pesan, weapon):
@@ -159,7 +151,7 @@ async def weapon(pesan, weapon):
 
 #ArtifactsDesc.py
 @bot.command(brief="Command showing artifacts description")
-async def artifacts(pesan, artifacts):
+async def artifact(pesan, artifacts):
     #Colors for rarity
     Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
 
