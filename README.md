@@ -12,13 +12,13 @@ This project would be *paused* if big events are available.
 **Fixed (Working fine)**
 Commands | Description
 ---------- | ----------
-!artifacts `<artifacts name>` | Showing artifact descriptions.
-!weapon `<weapon name>` | Showing weapon descriptions.
+hz.artifacts `<artifacts name>` | Showing artifact descriptions.
+hz.weapon `<weapon name>` | Showing weapon descriptions.
 
 #### Under Development (Still broken, *sometimes*)
 Commands | Description
 ------------ | -------------
-!resin `<current resin>` `<desired resin>` | Set resin timer.
+hz.resin `<current resin>` `<desired resin>` | Set resin timer.
 
 ## Requirements
 - Runtime `Python 3.8.10`
