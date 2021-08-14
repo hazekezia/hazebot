@@ -28,7 +28,7 @@ from pytz import timezone
 from datetime import datetime
 from discord.ext import commands, tasks
 
-bot = commands.Bot(command_prefix='!', description="hazeBot is a Discord Bot for Genshin Impact players.")
+bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
