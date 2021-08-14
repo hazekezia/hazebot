@@ -92,7 +92,7 @@ async def resin(pesan, resin1=None, resin2=None):
             await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
             return
         elif(resin1>resin2):
-            await pesan.send("Yang bener aja bro? Resinnya ngurang gitu? Format: !resin <current resin> <desired resin>")
+            await pesan.send("Yang bener aja bro? Resinnya ngurang gitu? Format: hz.resin <current resin> <desired resin>")
             return
         elif(resin1==resin2):
             await pesan.send("Bro, masa resin nya sama sih?")
@@ -184,5 +184,51 @@ async def artifact(pesan, artifacts):
 
     #Send
     await pesan.send(embed=Show)
+
+#NationDesc.py
+@bot.command(brief="Command showing nations on Teyvat.")
+async def nation(pesan, nation):
+    nation = nation.lower()
+    NationReq = requests.get("https://api.genshin.dev/nations/{}".format(nation))
+    Nation = NationReq.json()
+
+    if (nation=="mondstadt"):
+        Description = "A city of freedom that lies in the northeast of Teyvat. From amongst mountains and wide-open plains, carefree breezes carry the scent of dandelions — a gift from the Anemo God, Barbatos — across Cider Lake to Mondstadt, which sits on an island in the middle of the lake."
+        #Print
+        Show = discord.Embed(title=Nation["name"], description=Description, color=0x1eff00)
+        Show.set_thumbnail(url="https://api.genshin.dev/nations/{}/icon".format(nation))
+        Show.add_field(name="Element", value=Nation["element"])
+        Show.add_field(name="Archon", value=Nation["archon"])
+        Show.add_field(name="Controlling Entity", value=Nation["controllingEntity"])
+        Show.set_footer(text="Credits https://genshin.dev/")
+
+        #Send
+        await pesan.send(embed=Show)
+
+    elif (nation=="liyue"):
+        Description = "A bountiful harbor that lies in the east of Teyvat. Mountains stand tall and proud alongside the stone forest, that, together with the open plains and lively rivers, make up Liyue's bountiful landscape, which shows its unique beauty through each of the four seasons. Just how many gifts from the Geo God lie in wait amongst the rocks of Liyue's mountains?"
+        #Print
+        Show = discord.Embed(title=Nation["name"], description=Description, color=0xff8000)
+        Show.set_thumbnail(url="https://api.genshin.dev/nations/{}/icon".format(nation))
+        Show.add_field(name="Element", value=Nation["element"])
+        Show.add_field(name="Archon", value=Nation["archon"])
+        Show.add_field(name="Controlling Entity", value=Nation["controllingEntity"])
+        Show.set_footer(text="Credits https://genshin.dev/")
+
+        #Send
+        await pesan.send(embed=Show)
+
+    elif (nation=="inazuma"):
+        Description = "An Isolated Archipelago Far East of Teyvat. Overcome endless thunderstorms and set foot on the islands of red maple and cherry blossoms. On winding shores and towering cliffs, and in forests and mountains full of secrets, witness the Eternity pursued by Her Excellency, the Almighty Narukami Ogosho."
+        #Print
+        Show = discord.Embed(title=Nation["name"], description=Description, color=0xa335ee)
+        Show.set_thumbnail(url="https://api.genshin.dev/nations/{}/icon".format(nation))
+        Show.add_field(name="Element", value=Nation["element"])
+        Show.add_field(name="New Archon", value=Nation["archon"])
+        Show.add_field(name="Controlling Entity", value=Nation["controllingEntity"])
+        Show.set_footer(text="Credits https://genshin.dev/")
+
+        #Send
+        await pesan.send(embed=Show)
 
 bot.run(DCTOKEN)
