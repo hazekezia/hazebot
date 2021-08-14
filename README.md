@@ -13,6 +13,7 @@ This project would be *paused* if big events are available.
 Commands | Description
 ---------- | ----------
 hz.artifacts `<artifacts name>` | Showing artifact descriptions.
+hz.nation `<nation>` | Showing nations descriptions on Teyvat.
 hz.weapon `<weapon name>` | Showing weapon descriptions.
 
 #### Under Development (Still broken, *sometimes*)
