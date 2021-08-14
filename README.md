@@ -9,14 +9,16 @@ This project would be *paused* if big events are available.
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
 
 ## Arguments 
-- artifacts - for showing artifacts descriptions.
-  - !artifacts `<artifacts name>`
-- weapon - for showing weapon descriptions.
-  - !weapon `<weapon name>`
+**Fixed (Working fine)**
+Commands | Description
+---------- | ----------
+!artifacts `<artifacts name>` | Showing artifact descriptions.
+!weapon `<weapon name>` | Showing weapon descriptions.
 
 #### Under Development (Still broken, *sometimes*)
-- resin - set resin timer.
-  - !resin `<current resin>` `<desired resin>`
+Commands | Description
+------------ | -------------
+!resin `<current resin>` `<desired resin>` | Set resin timer.
 
 ## Requirements
 - Runtime `Python 3.8.10`
