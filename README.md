@@ -3,7 +3,7 @@ hazeBot is a Discord Bot for Genshin Impact players.
 
 Invite Bot : **Work in Progress (WIP)**
 
-This project would be *paused* if big events are available.
+This project would be *pause* if big events are available.
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hazekezia/hazebot_DiscordBot)](https://github.com/hazekezia/hazebot_DiscordBot/releases/)
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
@@ -12,9 +12,9 @@ This project would be *paused* if big events are available.
 **Fixed (Working fine)**
 Commands | Description
 ---------- | ----------
-hz.artifact `<artifacts name>` | Showing artifact descriptions.
-hz.nation `<nation>` | Showing nations descriptions on Teyvat.
-hz.weapon `<weapon name>` | Showing weapon descriptions.
+hz.artifact `<artifacts name>` | Show artifact descriptions.
+hz.nation `<nation>` | Show nations descriptions on Teyvat.
+hz.weapon `<weapon name>` | Show weapon descriptions.
 
 #### Under Development (Still broken, *sometimes*)
 Commands | Description
