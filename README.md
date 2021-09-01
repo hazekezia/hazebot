@@ -10,6 +10,7 @@ This project would be *pause* if big events are available.
 
 ## Arguments 
 **Fixed (Working fine)**
+
 Commands | Description
 ---------- | ----------
 hz.artifact `<artifacts name>` | Show artifact descriptions.
