@@ -3,8 +3,6 @@ hazeBot is a Discord Bot for Genshin Impact players.
 
 Invite Bot : **Work in Progress (WIP)**
 
-This project would be *pause* if big events are available.
-
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/hazekezia/hazebot_DiscordBot)](https://github.com/hazekezia/hazebot_DiscordBot/releases/)
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
 
