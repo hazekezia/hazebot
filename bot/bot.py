@@ -37,7 +37,7 @@ async def on_ready():
 
 #ResinTimer.py    
 @bot.command(brief="Commmand to set resin timer")
-async def resin(pesan, resin1=None, resin2=None):
+async def resin(pesan, resin1=int, resin2=int):
     if (resin1==None or resin2==None):
         await pesan.send("Masukkan resin sesuai dengan format!")
         return
