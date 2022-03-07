@@ -41,6 +41,9 @@ async def resin(pesan, resin1=None, resin2=None):
     if (resin1==None or resin2==None):
         await pesan.send("Masukkan resin sesuai dengan format!")
         return
+    elif (type(resin1) == str or type(resin2) == str):
+        await pesan.send("Masukkan resin sesuai dengan format!")
+        return
     else:
         resin1 = int(resin1)
         resin2 = int(resin2)
