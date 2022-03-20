@@ -12,7 +12,7 @@ Invite Bot : **Work in Progress (WIP)**
 Commands | Description
 ---------- | ----------
 hz.artifact `<artifacts name>` | Show artifact descriptions.
-hz.nation `,nation>` | Show nations descriptions on Teyvat.
+hz.nation `<nation>` | Show nations descriptions on Teyvat.
 hz.weapon `<weapon name>` | Show weapon descriptions.
 
 #### Under Development (Still broken, *sometimes*)
