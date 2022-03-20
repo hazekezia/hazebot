@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from multiprocessing.sharedctypes import Value
 import discord, asyncio, os
 import json, requests
 from pytz import timezone
@@ -39,11 +40,15 @@ async def on_ready():
 @bot.command(brief="Commmand to set resin timer")
 async def resin(pesan, resin1=None, resin2=None):
     if (resin1==None or resin2==None):
-        await pesan.send("Masukkan resin sesuai dengan format!")
+        await pesan.send("Masukkan resin sesuai dengan format! Type *hz.resin [current] [desired]*")
         return
     else:
-        resin1 = int(resin1)
-        resin2 = int(resin2)
+        try:
+            resin1 = int(resin1)
+            resin2 = int(resin2)
+        except ValueError:
+            await pesan.send("Masukkan resin sesuai dengan format! Type *hz.resin [current] [desired]*")
+            return
 
         # Atur Jam (Hours) dan Menit (Minutes)
         TimeDate = datetime.now()
@@ -92,7 +97,7 @@ async def resin(pesan, resin1=None, resin2=None):
             await pesan.send("Buset akun sultan, resin lebih dari 160. Ampun sultan!")
             return
         elif(resin1>resin2):
-            await pesan.send("Yang bener aja bro? Resinnya ngurang gitu? Format: hz.resin <current resin> <desired resin>")
+            await pesan.send("Yang bener aja bro? Resinnya ngurang gitu? Type *hz.resin [current] [desired]*")
             return
         elif(resin1==resin2):
             await pesan.send("Bro, masa resin nya sama sih?")
