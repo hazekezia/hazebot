@@ -259,4 +259,4 @@ async def nation(pesan, nation):
         await pesan.send("Nation not found. Please search again.")
         print("Send nation description Not Found by {}".format(pesan.author))
 
-bot.run("ODQ5NTU3NzgwMzkzNDkyNTIx.YLc6Vg.gjb0s7ITgsO8lbhbB5YM4nj-hKs")
+bot.run(DCTOKEN)
