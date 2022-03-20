@@ -153,6 +153,7 @@ async def weapon(pesan, weapon):
 
     #Send
     await pesan.send(embed=Show)
+    print("Send artefact description {} by {}".format(Name,pesan.author))
 
 #ArtifactsDesc.py
 @bot.command(brief="Command showing artifacts description")
@@ -189,6 +190,7 @@ async def artifact(pesan, artifacts):
 
     #Send
     await pesan.send(embed=Show)
+    print("Send artefact description {} by {}".format(Name,pesan.author))
 
 #NationDesc.py
 @bot.command(brief="Command showing nations on Teyvat.")
@@ -209,6 +211,7 @@ async def nation(pesan, nation):
 
         #Send
         await pesan.send(embed=Show)
+        print("Send nation description {} by {}".format(Nation["name"],pesan.author))
 
     elif (nation=="liyue"):
         Description = "A bountiful harbor that lies in the east of Teyvat. Mountains stand tall and proud alongside the stone forest, that, together with the open plains and lively rivers, make up Liyue's bountiful landscape, which shows its unique beauty through each of the four seasons. Just how many gifts from the Geo God lie in wait amongst the rocks of Liyue's mountains?"
@@ -222,6 +225,7 @@ async def nation(pesan, nation):
 
         #Send
         await pesan.send(embed=Show)
+        print("Send nation description {} by {}".format(Nation["name"],pesan.author))
 
     elif (nation=="inazuma"):
         Description = "An Isolated Archipelago Far East of Teyvat. Overcome endless thunderstorms and set foot on the islands of red maple and cherry blossoms. On winding shores and towering cliffs, and in forests and mountains full of secrets, witness the Eternity pursued by Her Excellency, the Almighty Narukami Ogosho."
@@ -235,5 +239,9 @@ async def nation(pesan, nation):
 
         #Send
         await pesan.send(embed=Show)
+        print("Send nation description {} by {}".format(Nation["name"],pesan.author))
+    
+    else:
+        await pesan.send("Nation tidak ada!")
 
 bot.run(DCTOKEN)
