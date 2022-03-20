@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from multiprocessing.sharedctypes import Value
 import discord, asyncio, os
 import json, requests
 from pytz import timezone
@@ -137,23 +136,28 @@ async def weapon(pesan, weapon):
     WeaponListRaw = requests.get("https://api.genshin.dev/weapons/{}".format(Weapon))
     JSONWeapon = WeaponListRaw.json()
 
-    #Initialization
-    Name = JSONWeapon["name"]
-    Descriptons = "".join([":star:" for i in range(0, JSONWeapon["rarity"])])
-    RarityColors = Colors[JSONWeapon["rarity"]]
-    
-    #Print
-    Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
-    Show.set_thumbnail(url="https://api.genshin.dev/weapons/{}/icon".format(Weapon))
-    Show.add_field(name="Type", value=JSONWeapon["type"])
-    Show.add_field(name="Base Attack", value=JSONWeapon["baseAttack"])
-    Show.add_field(name="Substat", value=JSONWeapon["subStat"])
-    Show.add_field(name=JSONWeapon["passiveName"], value=JSONWeapon["passiveDesc"], inline=False)
-    Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
+    try:
+        #Initialization
+        Name = JSONWeapon["name"]
+        Descriptons = "".join([":star:" for i in range(0, JSONWeapon["rarity"])])
+        RarityColors = Colors[JSONWeapon["rarity"]]
+        
+        #Print
+        Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+        Show.set_thumbnail(url="https://api.genshin.dev/weapons/{}/icon".format(Weapon))
+        Show.add_field(name="Type", value=JSONWeapon["type"])
+        Show.add_field(name="Base Attack", value=JSONWeapon["baseAttack"])
+        Show.add_field(name="Substat", value=JSONWeapon["subStat"])
+        Show.add_field(name=JSONWeapon["passiveName"], value=JSONWeapon["passiveDesc"], inline=False)
+        Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
 
-    #Send
-    await pesan.send(embed=Show)
-    print("Send artefact description {} by {}".format(Name,pesan.author))
+        #Send
+        await pesan.send(embed=Show)
+        print("Send weapon description {} by {}".format(Name,pesan.author))
+    except KeyError:
+        await pesan.send("Weapon not found. Please search again.")
+        print("Send weapon description Not Found by {}".format(pesan.author))
+        return
 
 #ArtifactsDesc.py
 @bot.command(brief="Command showing artifacts description")
@@ -176,21 +180,26 @@ async def artifact(pesan, artifacts):
     ArtifactsListRaw = requests.get("https://api.genshin.dev/artifacts/{}".format(Artifacts))
     JSONArtifacts = ArtifactsListRaw.json()
 
-    #Initialization
-    Name = JSONArtifacts["name"]
-    Descriptons = "Rarity Max : " + "".join([":star:" for i in range(0, JSONArtifacts["max_rarity"])])
-    RarityColors = Colors[JSONArtifacts["max_rarity"]]
-    
-    #Print
-    Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
-    Show.set_thumbnail(url="https://api.genshin.dev/artifacts/{}/flower-of-life".format(Artifacts))
-    Show.add_field(name="2-Piece Bonus", value=JSONArtifacts["2-piece_bonus"], inline=False)
-    Show.add_field(name="4-Piece Bonus", value=JSONArtifacts["4-piece_bonus"], inline=False)
-    Show.set_footer(text="Credits https://genshin.dev/")
+    try:
+        #Initialization
+        Name = JSONArtifacts["name"]
+        Descriptons = "Rarity Max : " + "".join([":star:" for i in range(0, JSONArtifacts["max_rarity"])])
+        RarityColors = Colors[JSONArtifacts["max_rarity"]]
+        
+        #Print
+        Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+        Show.set_thumbnail(url="https://api.genshin.dev/artifacts/{}/flower-of-life".format(Artifacts))
+        Show.add_field(name="2-Piece Bonus", value=JSONArtifacts["2-piece_bonus"], inline=False)
+        Show.add_field(name="4-Piece Bonus", value=JSONArtifacts["4-piece_bonus"], inline=False)
+        Show.set_footer(text="Credits https://genshin.dev/")
 
-    #Send
-    await pesan.send(embed=Show)
-    print("Send artefact description {} by {}".format(Name,pesan.author))
+        #Send
+        await pesan.send(embed=Show)
+        print("Send artefact description {} by {}".format(Name,pesan.author))
+    except KeyError:
+        await pesan.send("Artifact not found. Please search again.")
+        print("Send artefact description Not Found by {}".format(pesan.author))
+        return
 
 #NationDesc.py
 @bot.command(brief="Command showing nations on Teyvat.")
@@ -242,6 +251,7 @@ async def nation(pesan, nation):
         print("Send nation description {} by {}".format(Nation["name"],pesan.author))
     
     else:
-        await pesan.send("Nation tidak ada!")
+        await pesan.send("Nation not found. Please search again.")
+        print("Send nation description Not Found by {}".format(pesan.author))
 
 bot.run(DCTOKEN)
