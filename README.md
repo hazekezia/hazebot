@@ -20,7 +20,7 @@ Commands | Description
 ------------ | -------------
 hz.resin `<current resin>` `<desired resin>` | Set resin timer.
 
-#### Autism, do not try.
+#### Misc: Autism, do not try.
 Commands | Description
 ------------ | -------------
 hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know.
