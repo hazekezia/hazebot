@@ -24,6 +24,7 @@ hz.resin `<current resin>` `<desired resin>` | Set resin timer.
 Commands | Description
 ------------ | -------------
 hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know.
+hz.waifu | Random anime pictures.
 
 ## Requirements
 - Runtime `Python 3.8.10`
@@ -32,4 +33,5 @@ hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know.
 ## Credits
 - https://discordpy.readthedocs.io/en/latest/
 - https://genshin.dev/ - for API (**api.genshin.dev**)
+- https://waifu.pics/ - Waifu Pics API (**waifu.pics/docs**)
 - Someone :sparkling_heart:
