@@ -5,6 +5,9 @@ SAYA DISURUH TEMEN SAYA BIKIN INI
 I swear, I was told by my friends to do this...
 """
 
+import io
+import aiohttp
+import discord, asyncio, os, requests
 from discord.ext import commands
 import random
 
@@ -19,3 +22,15 @@ class Autism(commands.Cog):
         
         await ctx.send(acak)
         return
+    
+    @commands.command(brief="Command showing nations on Teyvat.")
+    async def waifu(self, ctx):
+        pic = requests.get("https://api.waifu.pics/sfw/waifu")
+        picx = pic.json()
+        url_links = picx["url"]
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url_links) as resp:
+                if resp.status != 200:
+                    return await ctx.send('Download failed!')
+                data = io.BytesIO(await resp.read())
+                await ctx.send(file=discord.File(data, 'waifu.png'))
