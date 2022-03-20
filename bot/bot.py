@@ -28,12 +28,17 @@ from pytz import timezone
 from datetime import datetime
 from discord.ext import commands, tasks
 
+from autism import Autism
+
 bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
+
+#Add Autism Arguments
+bot.add_cog(Autism(bot))
 
 #ResinTimer.py    
 @bot.command(brief="Commmand to set resin timer")
@@ -254,4 +259,4 @@ async def nation(pesan, nation):
         await pesan.send("Nation not found. Please search again.")
         print("Send nation description Not Found by {}".format(pesan.author))
 
-bot.run(DCTOKEN)
+bot.run("ODQ5NTU3NzgwMzkzNDkyNTIx.YLc6Vg.gjb0s7ITgsO8lbhbB5YM4nj-hKs")
