@@ -23,7 +23,7 @@ class Autism(commands.Cog):
         await ctx.send(acak)
         return
     
-    @commands.command(brief="Command showing nations on Teyvat.")
+    @commands.command(brief="Command Show Random Waifu Pictures")
     async def waifu(self, ctx):
         pic = requests.get("https://api.waifu.pics/sfw/waifu")
         picx = pic.json()
