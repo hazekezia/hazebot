@@ -117,7 +117,7 @@ async def resin(pesan, resin1=None, resin2=None):
                 loop += 1
             resin1 += 1
             if(resin1==resin2):
-                await pesan.send("Hello {}, your resin now is **{}**. Make sure to spend it!".format(pesan.author.mention, resin1))
+                await pesan.reply("Hello {}, your resin now is **{}**. Make sure to spend it!".format(pesan.author.mention, resin1))
                 break
 
 #WeaponDesc.py
@@ -157,10 +157,10 @@ async def weapon(pesan, weapon):
         Show.add_field(name="How to Get This Weapon", value=JSONWeapon["location"], inline=False)
 
         #Send
-        await pesan.send(embed=Show)
+        await pesan.reply(embed=Show)
         print("Send weapon description {} by {}".format(Name,pesan.author))
     except KeyError:
-        await pesan.send("Weapon not found. Please search again.")
+        await pesan.reply("Weapon not found. Please search again.")
         print("Send weapon description Not Found by {}".format(pesan.author))
         return
 
@@ -199,10 +199,10 @@ async def artifact(pesan, artifacts):
         Show.set_footer(text="Credits https://genshin.dev/")
 
         #Send
-        await pesan.send(embed=Show)
+        await pesan.reply(embed=Show)
         print("Send artefact description {} by {}".format(Name,pesan.author))
     except KeyError:
-        await pesan.send("Artifact not found. Please search again.")
+        await pesan.reply("Artifact not found. Please search again.")
         print("Send artefact description Not Found by {}".format(pesan.author))
         return
 
@@ -256,7 +256,7 @@ async def nation(pesan, nation):
         print("Send nation description {} by {}".format(Nation["name"],pesan.author))
     
     else:
-        await pesan.send("Nation not found. Please search again.")
+        await pesan.reply("Nation not found. Please search again.")
         print("Send nation description Not Found by {}".format(pesan.author))
 
 bot.run(DCTOKEN)
