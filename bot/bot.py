@@ -47,9 +47,10 @@ bot.add_cog(Autism(bot))
 #ResinCheck
 @bot.command(brief="Commmand to set resin timer")
 async def myresin(pesan):
+    gs.set_cookie(ltuid=LUID, ltoken=LTOKEN)
     uid = 803147734
     data_ = gs.get_notes(uid)
-    await pesan.reply(f"{pesan.author.mention} Current resin: {data_['resin']}/{data_['max_resin']}")
+    await pesan.send(f"Current resin: {data_['resin']}/{data_['max_resin']}")
 
 
 #ResinTimer.py    
