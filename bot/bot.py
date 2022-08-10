@@ -27,11 +27,15 @@ import json, requests
 from pytz import timezone
 from datetime import datetime
 from discord.ext import commands, tasks
+import genshinstats as gs
 
 from autism import Autism
 
 bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
+LTOKEN = os.getenv("ltoken")
+LUID = os.getenv("luid")
+
 
 @bot.event
 async def on_ready():
@@ -39,6 +43,14 @@ async def on_ready():
 
 #Add Autism Arguments
 bot.add_cog(Autism(bot))
+
+#ResinCheck
+@bot.command(brief="Commmand to set resin timer")
+async def myresin(pesan):
+    uid = 803147734
+    data_ = gs.get_notes(uid)
+    await pesan.reply(f"{pesan.author.mention} Current resin: {data_['resin']}/{data_['max_resin']}")
+
 
 #ResinTimer.py    
 @bot.command(brief="Commmand to set resin timer")
