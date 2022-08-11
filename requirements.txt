@@ -2,3 +2,4 @@ discord.py
 pytz
 requests
 genshinstats
+mysql-connector-python
