@@ -45,4 +45,4 @@ bot.add_cog(myStats(bot))
 #Add Genshinstats Arguments
 bot.add_cog(GenshinWiki(bot))
 
-bot.run("ODQ3NjY1OTg2NjQzNDI3Mzg4.GpzJiZ.rv84Cu9L6_2WihWpU35pqOu5BcmqF-VK045dQo")
+bot.run(DCTOKEN)
