@@ -17,7 +17,7 @@ hz.weapon `<weapon name>` | Show weapon descriptions.
 #### Genshin Impact Stats
 Commands | Description
 ------------ | -------------
-hz.addme `<ltoken>` `<ltuid>` `<uid>` | Add your stats using HoyoLab cookie, more information check [below.](https://github.com/hazekezia/hazebot_DiscordBot#how-can-i-get-my-cookies)
+hz.addme `<ltoken>` `<ltuid>` `<uid>` | Add your stats using HoyoLab cookie, more information check [below.](https://github.com/hazekezia/hazebot_DiscordBot#how-to-use-addme-command)
 hz.checkme | Check if your cookie is already in database.
 hz.myresin | Check your resin.
 hz.myrealm | Check your realm currency.
