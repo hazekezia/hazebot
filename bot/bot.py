@@ -28,14 +28,12 @@ from pytz import timezone
 from datetime import datetime
 from discord.ext import commands, tasks
 import genshinstats as gs
-from dotenv import load_dotenv
 
 from autism import Autism
 
 bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
-load_dotenv()
 LTOKEN = os.getenv("LTOKEN")
 LTUID = os.getenv("LTUID")
 LUID = os.getenv("LUID")
