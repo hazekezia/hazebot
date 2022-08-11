@@ -25,7 +25,7 @@ SOFTWARE.
 import discord, os
 from discord.ext import commands, tasks
 
-from Autism import Autism
+from Cringe import Autism
 from GenshinWiki import GenshinWiki
 from myGenshinStats import myStats
 
