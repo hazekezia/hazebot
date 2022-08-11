@@ -1,7 +1,7 @@
 # hazeBot
 hazeBot is a Discord Bot for Genshin Impact players.
 
-Invite Bot : **Work in Progress (WIP)**
+Invite Bot : https://bit.ly/3dlTcMv
 
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
 
@@ -30,13 +30,13 @@ Commands | Description
 hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know.
 hz.waifu | Random anime pictures.
 
-## How can I get my cookies?
-1. go to [hoyolab.com](https://www.hoyolab.com/genshin/)
-2. login to your account
-3. press `F12` to open inspect mode (aka Developer Tools)
-4. go to `Application`, `Cookies`, `https://www.hoyolab.com`.
-5. copy `ltuid` and `ltoken`
-6. use `set_cookie(ltuid=..., ltoken=...)` in your code
+## How To Use addme Command
+1. Go to [hoyolab.com](https://www.hoyolab.com/genshin/)
+2. Login to your account
+3. Press `F12` to open Developer Tools.
+4. Go to `Application`, `Cookies`, `https://www.hoyolab.com`.
+5. Search for `ltuid` and `ltoken`, for `UID` you can found under your profile in-game.
+6. Then use command `hz.addme <ltoken> <ltuid> <uid>`
 
 ## Requirements
 - Runtime `Python 3.8.10`
