@@ -29,9 +29,9 @@ from _Cringe import Autism
 from _GenshinWiki import GenshinWiki
 from _myGenshinStats import myStats
 
-""" from _TestField import TestField
+from _TestField import TestField
 
-from dotenv import load_dotenv
+""" from dotenv import load_dotenv
 load_dotenv() """
 
 bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
@@ -50,7 +50,7 @@ bot.add_cog(GenshinWiki(bot))
 #Add Autism Arguments
 bot.add_cog(Autism(bot))
 
-""" #Add TestField Arguments
-bot.add_cog(TestField(bot)) """
+#Add TestField Arguments
+bot.add_cog(TestField(bot))
 
 bot.run(DCTOKEN)
