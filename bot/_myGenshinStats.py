@@ -21,16 +21,24 @@ class myStats(commands.Cog):
             db = connecting_db()
             cursor = db.cursor(buffered=True)
 
-            SQLCommand = "INSERT INTO user (profile_id, server_id, ltoken, ltuid, uid) VALUES (%s, %s, %s, %s, %s)"
-            Data = (ctx.author.id, ctx.guild.id, ltoken, ltuid, uid)
+            profid = ctx.author.id
+        
+            cursor.execute("SELECT profile_id FROM user where profile_id = %s", (profid,))
+            if (cursor.rowcount <= 0):
+                SQLCommand = "INSERT INTO user (profile_id, server_id, ltoken, ltuid, uid) VALUES (%s, %s, %s, %s, %s)"
+                Data = (ctx.author.id, ctx.guild.id, ltoken, ltuid, uid)
 
-            cursor.execute(SQLCommand, Data)
-            db.commit()
-            cursor.close()
+                cursor.execute(SQLCommand, Data)
+                db.commit()
+                cursor.close()
 
-            await ctx.message.delete()
-            await ctx.send("User added!")
-            return
+                await ctx.message.delete()
+                await ctx.send("User added!")
+                return
+            elif (cursor.rowcount >= 1):
+                cursor.close()
+                await ctx.send("Your account is already in database!")
+                return
 
     #Database check user
     @commands.command(brief="Commmand to add your genshin stats")
