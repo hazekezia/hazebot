@@ -6,7 +6,7 @@ Invite Bot : https://bit.ly/3dlTcMv
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
 
 ## Arguments 
-**Genshin Impact Wikipedia**
+**Genshin Impact Wiki**
 
 Commands | Description
 ---------- | ----------
@@ -27,7 +27,7 @@ hz.resintimer `<current resin>` `<desired resin>` | Set resin timer.
 #### Misc: Autism, do not try.
 Commands | Description
 ------------ | -------------
-hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know.
+hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know. (*NSFW*)
 hz.waifu | Random anime pictures.
 
 ## How To Use addme Command
