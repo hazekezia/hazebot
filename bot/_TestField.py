@@ -9,3 +9,8 @@ class TestField(commands.Cog):
         await ctx.message.delete()
         await ctx.send("deleted")
         return
+    
+    @commands.command(brief="TestField")
+    async def blough(self, ctx):
+        await ctx.send("lu gobloug")
+        return
