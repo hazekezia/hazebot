@@ -35,7 +35,7 @@ hz.waifu | Random anime pictures.
 2. Login to your account
 3. Press `F12` to open Developer Tools.
 4. Go to `Application`, `Cookies`, `https://www.hoyolab.com`.
-5. Search for `ltuid` and `ltoken`, for `UID` you can found under your profile in-game.
+5. Search for `ltoken` and `ltuid`, for `UID` you can found under your profile in-game.
 6. Then use command `hz.addme <ltoken> <ltuid> <uid>`
 
 ## Requirements
