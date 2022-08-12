@@ -4,7 +4,7 @@ from datetime import datetime
 from pytz import timezone
 from discord.ext import commands
 
-from db import connecting_db
+from database import connecting_db
 
 class myStats(commands.Cog):
     def __init__(self, bot):
@@ -28,6 +28,7 @@ class myStats(commands.Cog):
             db.commit()
             cursor.close()
 
+            await ctx.message.delete()
             await ctx.send("User added!")
             return
 

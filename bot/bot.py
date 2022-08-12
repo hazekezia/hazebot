@@ -25,9 +25,14 @@ SOFTWARE.
 import discord, os
 from discord.ext import commands, tasks
 
-from Cringe import Autism
-from GenshinWiki import GenshinWiki
-from myGenshinStats import myStats
+from _Cringe import Autism
+from _GenshinWiki import GenshinWiki
+from _myGenshinStats import myStats
+
+""" from _TestField import TestField
+
+from dotenv import load_dotenv
+load_dotenv() """
 
 bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
@@ -36,13 +41,16 @@ DCTOKEN = os.getenv("DC_TOKEN")
 async def on_ready():
     print("{} is online!".format(bot.user))
 
+#Add GenshinStats Arguments
+bot.add_cog(myStats(bot))
+
+#Add GenshinWiki Arguments
+bot.add_cog(GenshinWiki(bot))
+
 #Add Autism Arguments
 bot.add_cog(Autism(bot))
 
-#Add Genshinstats Arguments
-bot.add_cog(myStats(bot))
-
-#Add Genshinstats Arguments
-bot.add_cog(GenshinWiki(bot))
+""" #Add TestField Arguments
+bot.add_cog(TestField(bot)) """
 
 bot.run(DCTOKEN)
