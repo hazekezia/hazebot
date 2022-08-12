@@ -15,7 +15,7 @@ class myStats(commands.Cog):
     async def addme(self, ctx, ltoken=None, ltuid=None, uid=None):
         if (ltoken == None or ltuid == None or uid == None):
             await ctx.send("Format: hz.addme <ltoken> <ltuid> <uid>")
-            await ctx.send("How to get that : https://github.com/hazekezia/hazebot_DiscordBot")
+            await ctx.send("How to get that : <https://github.com/hazekezia/hazebot_DiscordBot>")
             return
         else:
             db = connecting_db()
