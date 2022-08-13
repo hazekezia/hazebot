@@ -39,7 +39,9 @@ hz.waifu | Random anime pictures.
 6. Then use command `hz.addme <ltoken> <ltuid> <uid>`
 7. Make sure your privacy settings like this.
 
-<img src="./img/privacy-settings.png" align="center" />
+<p align="center">
+  <img src="./img/privacy-settings.png" />
+</p>
 
 ## Requirements
 - Runtime `Python 3.8.10`
