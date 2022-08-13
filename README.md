@@ -3,7 +3,7 @@ hazeBot is a Discord Bot for Genshin Impact players.
 
 Invite Bot : https://bit.ly/3dlTcMv
 
-[![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot_DiscordBot)
+[![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot)
 
 ## Arguments 
 **Genshin Impact Wiki**
@@ -17,7 +17,7 @@ hz.weapon `<weapon name>` | Show weapon descriptions.
 #### Genshin Impact Stats
 Commands | Description
 ------------ | -------------
-hz.addme `<ltoken>` `<ltuid>` `<uid>` | Add your stats using HoyoLab cookie, more information check [below.](https://github.com/hazekezia/hazebot_DiscordBot#how-to-use-addme-command)
+hz.addme `<ltoken>` `<ltuid>` `<uid>` | Add your stats using HoyoLab cookie, more information check [below.](https://github.com/hazekezia/hazebot#how-to-use-addme-command)
 hz.checkme | Check if your cookie is already in database.
 hz.myresin | Check your resin.
 hz.myrealm | Check your realm currency.
