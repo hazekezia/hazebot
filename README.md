@@ -37,6 +37,9 @@ hz.waifu | Random anime pictures.
 4. Go to `Application`, `Cookies`, `https://www.hoyolab.com`.
 5. Search for `ltoken` and `ltuid`, for `UID` you can found under your profile in-game.
 6. Then use command `hz.addme <ltoken> <ltuid> <uid>`
+7. Make sure your privacy settings like this.
+
+<img src="./img/privacy-settings.png" align="center" />
 
 ## Requirements
 - Runtime `Python 3.8.10`
