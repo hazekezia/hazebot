@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import asyncio
 import discord, os
 from discord.ext import commands, tasks
 
@@ -31,26 +32,34 @@ from _myGenshinStats import myStats
 
 from _TestField import TestField
 
-""" from dotenv import load_dotenv
-load_dotenv() """
+from dotenv import load_dotenv
+load_dotenv()
 
-bot = commands.Bot(command_prefix="hz.", description="hazeBot is a Discord Bot for Genshin Impact players.")
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix="hz.", intents=intents, description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
 
-#Add GenshinStats Arguments
-bot.add_cog(myStats(bot))
+async def main():
+    async with bot:
+        #Add GenshinStats Arguments
+        await bot.add_cog(myStats(bot))
 
-#Add GenshinWiki Arguments
-bot.add_cog(GenshinWiki(bot))
+        #Add GenshinWiki Arguments
+        await bot.add_cog(GenshinWiki(bot))
 
-#Add Autism Arguments
-bot.add_cog(Autism(bot))
+        #Add Autism Arguments
+        await bot.add_cog(Autism(bot))
 
-#Add TestField Arguments
-bot.add_cog(TestField(bot))
+        #Add TestField Arguments
+        await bot.add_cog(TestField(bot))
 
-bot.run(DCTOKEN)
+        #Start bot
+        await bot.start(DCTOKEN)
+
+asyncio.run(main())
