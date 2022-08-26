@@ -3,3 +3,4 @@ pytz
 requests
 genshinstats
 mysql-connector-python
+python-dotenv
