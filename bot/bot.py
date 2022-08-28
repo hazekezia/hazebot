@@ -28,8 +28,7 @@ from discord.ext import commands, tasks
 
 from _Cringe import Autism
 from _GenshinWiki import GenshinWiki
-from _myGenshinStats import myStats
-
+from _myGenshinStats import GenshinStats
 from _TestField import TestField
 
 from dotenv import load_dotenv
@@ -38,17 +37,21 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix="hz.", intents=intents, description="hazeBot is a Discord Bot for Genshin Impact players.")
+bot = commands.Bot(command_prefix="hz.", status=discord.Status.idle, activity = discord.Game(name="Ente kadang-kadang ente, ini beda lagi nih"), intents=intents, description="hazeBot is a Discord Bot for Genshin Impact players.")
 DCTOKEN = os.getenv("DC_TOKEN")
 
 @bot.event
 async def on_ready():
     print("{} is online!".format(bot.user))
+    print("=================================================")
+    print('List of servers the bot is in: ')
+    for guilds in bot.guilds:
+        print(guilds.name)
 
 async def main():
     async with bot:
         #Add GenshinStats Arguments
-        await bot.add_cog(myStats(bot))
+        await bot.add_cog(GenshinStats(bot))
 
         #Add GenshinWiki Arguments
         await bot.add_cog(GenshinWiki(bot))
