@@ -6,12 +6,12 @@ from discord.ext import commands
 
 from database import connecting_db
 
-class myStats(commands.Cog):
+class GenshinStats(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     #Database add user
-    @commands.command(brief="Commmand to add your genshin stats")
+    @commands.command(brief="Add your HoyoLab account to database")
     async def addme(self, ctx, ltoken=None, ltuid=None, uid=None):
         if (ltoken == None or ltuid == None or uid == None):
             await ctx.send("Format: hz.addme <ltoken> <ltuid> <uid>")
@@ -28,12 +28,14 @@ class myStats(commands.Cog):
                 SQLCommand = "INSERT INTO user (profile_id, server_id, ltoken, ltuid, uid) VALUES (%s, %s, %s, %s, %s)"
                 Data = (ctx.author.id, ctx.guild.id, ltoken, ltuid, uid)
 
+                print(ctx.guild.id)
+
                 cursor.execute(SQLCommand, Data)
                 db.commit()
                 cursor.close()
 
                 await ctx.message.delete()
-                await ctx.send("User added!")
+                await ctx.send("User added! You can always delete your account using hz.deleteme command.")
                 return
             elif (cursor.rowcount >= 1):
                 cursor.close()
@@ -41,7 +43,7 @@ class myStats(commands.Cog):
                 return
 
     #Database check user
-    @commands.command(brief="Commmand to add your genshin stats")
+    @commands.command(brief="Check your HoyoLab account already on database")
     async def checkme(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
@@ -59,8 +61,22 @@ class myStats(commands.Cog):
             await ctx.send("Already on database!")
             return
 
+    #Database delete user
+    @commands.command(brief="Delete your HoyoLab account on database")
+    async def deleteme(self, ctx):
+        db = connecting_db()
+        cursor = db.cursor(buffered=True)
+
+        profid = ctx.author.id
+        
+        cursor.execute("DELETE FROM user WHERE profile_id = %s", (profid,))
+        db.commit()
+
+        await ctx.send("User deleted!")
+        return
+
     #ResinCheck
-    @commands.command(brief="Commmand to show current resin")
+    @commands.command(brief="Show your current resin")
     async def myresin(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
@@ -85,7 +101,7 @@ class myStats(commands.Cog):
             return
         
     #RealmCurrencyCheck
-    @commands.command(brief="Commmand to show current realm currency")
+    @commands.command(brief="Show your current realm currency")
     async def myrealm(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
@@ -109,7 +125,7 @@ class myStats(commands.Cog):
             return
         
     #DailyClaim
-    @commands.command(brief="Commmand to claim daily reward")
+    @commands.command(brief="Claim daily reward from HoyoLab")
     async def claimdaily(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
@@ -135,7 +151,7 @@ class myStats(commands.Cog):
             return
 
     #ResinTimer.py    
-    @commands.command(brief="Commmand to set resin timer")
+    @commands.command(brief="Set resin timer")
     async def resintimer(self, ctx, resin1=None, resin2=None):
         if (resin1==None or resin2==None):
             await ctx.send("Masukkan resin sesuai dengan format! Type *hz.resin [current] [desired]*")

@@ -5,8 +5,7 @@ class GenshinWiki(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    #WeaponDesc.py
-    @commands.command(brief="Command showing weapon description")
+    @commands.command(brief="Showing weapon description")
     async def weapon(self, pesan, weapon):
         #Colors for rarity
         Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
@@ -49,8 +48,7 @@ class GenshinWiki(commands.Cog):
             print("Send weapon description Not Found by {}".format(pesan.author))
             return
 
-    #ArtifactsDesc.py
-    @commands.command(brief="Command showing artifacts description")
+    @commands.command(brief="Showing artifacts description")
     async def artifact(self, pesan, artifacts):
         #Colors for rarity
         Colors = {5: 0xff8000, 4: 0xa335ee, 3: 0x0070dd, 2: 0x1eff00, 1: 0xffffff}
@@ -91,8 +89,7 @@ class GenshinWiki(commands.Cog):
             print("Send artefact description Not Found by {}".format(pesan.author))
             return
 
-    #NationDesc.py
-    @commands.command(brief="Command showing nations on Teyvat.")
+    @commands.command(brief="Showing nation description on Teyvat.")
     async def nation(self, pesan, nation):
         nation = nation.lower()
         NationReq = requests.get("https://api.genshin.dev/nations/{}".format(nation))
