@@ -5,8 +5,9 @@ Invite Bot : https://bit.ly/3dlTcMv
 
 [![GitHub license](https://img.shields.io/github/license/hazekezia/hazebot_DiscordBot?style=flat)](https://github.com/hazekezia/hazebot)
 
-## Arguments 
-**Genshin Impact Wiki**
+## Arguments / Commands
+
+### Genshin Impact Wiki
 
 Commands | Description
 ---------- | ----------
@@ -14,17 +15,23 @@ hz.artifact `<artifacts name>` | Show artifact descriptions.
 hz.nation `<nation>` | Show nations descriptions on Teyvat.
 hz.weapon `<weapon name>` | Show weapon descriptions.
 
-#### Genshin Impact Stats
+### HoyoLab
 Commands | Description
 ------------ | -------------
 hz.addme `<ltoken>` `<ltuid>` `<uid>` | Add your stats using HoyoLab cookie, more information check [below.](https://github.com/hazekezia/hazebot#how-to-use-addme-command)
 hz.checkme | Check if your cookie is already in database.
+hz.deleteme | Delete your cookie on database.
+
+### Genshin Impact Stats
+You need to add your account using hz.addme command first.
+Commands | Description
+------------ | -------------
 hz.myresin | Check your resin.
 hz.myrealm | Check your realm currency.
 hz.claimdaily | Claim your daily reward from HoyoLab
 hz.resintimer `<current resin>` `<desired resin>` | Set resin timer.
 
-#### Misc: Autism, do not try.
+### Misc: Autism, do not try.
 Commands | Description
 ------------ | -------------
 hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know. (*NSFW*)
