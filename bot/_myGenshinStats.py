@@ -94,7 +94,11 @@ class GenshinStats(commands.Cog):
             uid = LUID
             data_ = gs.get_notes(uid)
 
-            await ctx.send("Hello {}, your current resin: {}/{}".format(ctx.author.mention, data_['resin'], data_['max_resin']))
+            record_card = gs.get_record_card(LTUID)
+            nickname = record_card["nickname"]
+            level = record_card["level"]
+
+            await ctx.send("Hello {}, your current resin: {}/{} (*{}* - AR{})".format(ctx.author.mention, data_['resin'], data_['max_resin'], nickname, level))
             return
         elif (cursor.rowcount <= 0):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
@@ -118,7 +122,12 @@ class GenshinStats(commands.Cog):
             gs.set_cookie(ltuid=LTUID, ltoken=LTOKEN)
             uid = LUID
             data_ = gs.get_notes(uid)
-            await ctx.send("Hello {}, your current realm currency: {}/{}".format(ctx.author.mention, data_['realm_currency'], data_['max_realm_currency']))
+
+            record_card = gs.get_record_card(LTUID)
+            nickname = record_card["nickname"]
+            level = record_card["level"]
+
+            await ctx.send("Hello {}, your current realm currency: {}/{} (*{}* - AR{})".format(ctx.author.mention, data_['realm_currency'], data_['max_realm_currency'], nickname, level))
             return
         elif (cursor.rowcount <= 0):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
