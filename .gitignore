@@ -2,3 +2,4 @@ bot\__pycache__
 .env
 *.pyc
 notes.txt
+experiments
