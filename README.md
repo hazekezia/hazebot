@@ -31,7 +31,7 @@ hz.myrealm | Check your realm currency.
 hz.claimdaily | Claim your daily reward from HoyoLab
 hz.resintimer `<current resin>` `<desired resin>` | Set resin timer.
 
-### Misc: Autism, do not try.
+### Miscellaneous
 Commands | Description
 ------------ | -------------
 hz.wangy `<your waifu>` | Wangy Wangy Copypasta. If you know, you know. (*NSFW*)
