@@ -98,7 +98,45 @@ class GenshinStats(commands.Cog):
             nickname = record_card["nickname"]
             level = record_card["level"]
 
-            await ctx.send("Hello {}, your current resin: {}/{} (*{}* - AR{})".format(ctx.author.mention, data_['resin'], data_['max_resin'], nickname, level))
+
+            #Calculate Resin
+
+            ResinTimer = 8 #Minutes
+            ResinNow = data_['resin']
+            ResinMax = data_['max_resin']
+
+            resinGap = ResinMax - ResinNow
+            totalMinutesResin = ResinTimer*resinGap
+
+            TimeDate = datetime.now()
+            Asia = TimeDate.astimezone(timezone("Asia/Jakarta"))
+
+            Hours = int(Asia.strftime("%H"))
+            Minutes = int(Asia.strftime("%M"))
+
+            timeLeftHrs = int(totalMinutesResin/60) 
+            timeLeftMin = int(totalMinutesResin%60)
+
+            #Set Hours
+            timeHrs = timeLeftHrs + Hours
+            if (timeHrs >= 24):
+                timeHrs = timeHrs%24
+                if (timeHrs < 10):
+                    timeHrs = str(timeHrs)
+                    timeHrs = "0" + timeHrs
+
+            #Set Minutes
+            timeMin = timeLeftMin + Minutes
+            if (timeMin >= 60):
+                timeMin = timeMin%60
+                timeHrs = int(timeHrs)+1
+                if (timeMin < 10):
+                    timeMin = str(timeMin)
+                    timeMin = "0" + timeMin
+
+            # ==========================================================
+
+            await ctx.send("{} [*{}* - AR{}], your current resin: {}/{}. Full refill in **{} hours {} minutes ** at {}:{} UTC+7".format(ctx.author.mention, nickname, level, ResinNow, ResinMax, timeLeftHrs, timeLeftMin, timeHrs, timeMin))
             return
         elif (cursor.rowcount <= 0):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
