@@ -98,7 +98,6 @@ class GenshinStats(commands.Cog):
             nickname = record_card["nickname"]
             level = record_card["level"]
 
-
             #Calculate Resin
 
             ResinTimer = 8 #Minutes
@@ -134,9 +133,13 @@ class GenshinStats(commands.Cog):
                     timeMin = str(timeMin)
                     timeMin = "0" + timeMin
 
-            # ==========================================================
+            # Status condition
+            if (ResinNow == ResinMax):
+                nextStr = "Already full, spend it already!"
+            else:
+                nextStr = "Full refill in **{} hours {} minutes ** at {}:{} UTC+7".format(timeLeftHrs, timeLeftMin, timeHrs, timeMin)
 
-            await ctx.send("{} [*{}* - AR{}], your current resin: {}/{}. Full refill in **{} hours {} minutes ** at {}:{} UTC+7".format(ctx.author.mention, nickname, level, ResinNow, ResinMax, timeLeftHrs, timeLeftMin, timeHrs, timeMin))
+            await ctx.send("{} [*{}* - AR{}], your current resin: {}/{}. {}".format(ctx.author.mention, nickname, level, ResinNow, ResinMax, nextStr))
             return
         elif (cursor.rowcount <= 0):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
