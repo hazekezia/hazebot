@@ -77,7 +77,7 @@ class GenshinStats(commands.Cog):
 
     #ResinCheck
     @commands.command(brief="Show your current resin")
-    async def myresin(self, ctx):
+    async def resin(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
         profid = ctx.author.id
@@ -147,7 +147,7 @@ class GenshinStats(commands.Cog):
         
     #RealmCurrencyCheck
     @commands.command(brief="Show your current realm currency")
-    async def myrealm(self, ctx):
+    async def realm(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
         profid = ctx.author.id
@@ -176,7 +176,7 @@ class GenshinStats(commands.Cog):
         
     #DailyClaim
     @commands.command(brief="Claim daily reward from HoyoLab")
-    async def claimdaily(self, ctx):
+    async def hoyoclaim(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
         profid = ctx.author.id

@@ -26,9 +26,9 @@ hz.deleteme | Delete your cookie on database.
 You need to add your account using hz.addme command first.
 Commands | Description
 ------------ | -------------
-hz.myresin | Check your resin.
-hz.myrealm | Check your realm currency.
-hz.claimdaily | Claim your daily reward from HoyoLab
+hz.resin | Check your resin.
+hz.realm | Check your realm currency.
+hz.hoyoclaim | Claim your daily reward from HoyoLab
 hz.resintimer `<current resin>` `<desired resin>` | Set resin timer.
 
 ### Miscellaneous
