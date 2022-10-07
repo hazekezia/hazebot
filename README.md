@@ -11,7 +11,8 @@ Invite Bot : https://bit.ly/3dlTcMv
 
 Commands | Description
 ---------- | ----------
-hz.artifact `<artifacts name>` | Show artifact descriptions.
+hz.artifact `<artifact name>` | Show artifact descriptions.
+hz.char  `<character name>` | Show characters descriptions.
 hz.nation `<nation>` | Show nations descriptions on Teyvat.
 hz.weapon `<weapon name>` | Show weapon descriptions.
 
