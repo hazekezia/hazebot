@@ -88,6 +88,50 @@ class GenshinWiki(commands.Cog):
             await pesan.reply("Artifact not found. Please search again.")
             print("Send artefact description Not Found by {}".format(pesan.author))
             return
+    
+    @commands.command(brief="Showing characters description")
+    async def char(self, pesan, chars):
+        #Colors for rarity
+        Colors = {"Cryo": 0x7da6de, "Pyro": 0xb92b2f, "Geo": 0xe5a659, "Dendro": 0x72a723, "Hydro": 0x238fbd, "Electro": 0x7553c3, "Anemo": 0x349790}
+
+        #Lower Case
+        Chars = chars.lower()
+        CharsList = requests.get("https://api.genshin.dev/characters")
+        CharsList = CharsList.json()
+
+        #Check Artifacts Array
+        for CheckList in CharsList:
+            if Chars in CheckList:
+                Chars = CheckList
+                break
+        
+        #Artifacts Check
+        CharsListRaw = requests.get("https://api.genshin.dev/characters/{}".format(Chars))
+        JSONChars = CharsListRaw.json()
+
+        try:
+            #Initialization
+            Name = JSONChars["name"]
+            Descriptons = "Rarity : " + "".join([":star:" for i in range(0, JSONChars["rarity"])])
+            RarityColors = Colors[JSONChars["vision"]]
+            
+            #Print
+            Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+            Show.set_thumbnail(url="https://api.genshin.dev/characters/{}/icon".format(Chars))
+            Show.add_field(name="Vision", value=JSONChars["vision"])
+            Show.add_field(name="Weapon", value=JSONChars["weapon"])
+            Show.add_field(name="Nation", value=JSONChars["nation"])
+            Show.add_field(name="Affilitation", value=JSONChars["affiliation"], inline=False)
+            Show.add_field(name="About", value=JSONChars["description"], inline=False)
+            Show.set_footer(text="Credits https://genshin.dev/")
+
+            #Send
+            await pesan.reply(embed=Show)
+            print("Send character description {} by {}".format(Name,pesan.author))
+        except KeyError:
+            await pesan.reply("Character not found. Please search again.")
+            print("Send character description Not Found by {}".format(pesan.author))
+            return
 
     @commands.command(brief="Showing nation description on Teyvat.")
     async def nation(self, pesan, nation):
