@@ -1,4 +1,5 @@
 from discord.ext import commands
+import discord, requests, os
 from pytz import timezone
 from datetime import datetime
 
