@@ -174,6 +174,44 @@ class GenshinStats(commands.Cog):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
             return
         
+    #RealmCurrencyCheck
+    @commands.command(brief="Show your current realm currency")
+    async def exp(self, ctx):
+        db = connecting_db()
+        cursor = db.cursor(buffered=True)
+        profid = ctx.author.id
+
+        cursor.execute("SELECT * FROM user where profile_id = %s", (profid,))
+        result = cursor.fetchone()
+
+        if (cursor.rowcount >= 1):
+            LTOKEN = result[3]
+            LTUID = result[4]
+            LUID = result[5]
+
+            gs.set_cookie(ltuid=LTUID, ltoken=LTOKEN)
+            uid = LUID
+
+            record_card = gs.get_record_card(LTUID)
+            nickname = record_card["nickname"]
+            level = record_card["level"]
+
+            make = {}
+            notes = gs.get_notes(uid)['expeditions']
+            count = 1
+            for i in notes:
+                name = count
+                make[name] = i['icon'][92:-4] + " - " + i['status']
+                count+=1
+
+            result = '\n'.join(f'{x}. {y}' for x, y in make.items())
+
+            await ctx.send("Expedition progress for *{}* - AR{}\n\n{}".format(nickname,level,result))
+            return
+        elif (cursor.rowcount <= 0):
+            await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
+            return
+
     #DailyClaim
     @commands.command(brief="Claim daily reward from HoyoLab")
     async def hoyoclaim(self, ctx):
