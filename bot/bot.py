@@ -60,7 +60,7 @@ async def main():
         await bot.add_cog(Autism(bot))
 
         #Add TestField Arguments
-        await bot.add_cog(TestField(bot))
+        #await bot.add_cog(TestField(bot))
 
         #Start bot
         await bot.start(DCTOKEN)
