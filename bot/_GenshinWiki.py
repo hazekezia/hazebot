@@ -28,11 +28,11 @@ class GenshinWiki(commands.Cog):
         try:
             #Initialization
             Name = JSONWeapon["name"]
-            Descriptons = "".join([":star:" for i in range(0, JSONWeapon["rarity"])])
+            Descriptions = "".join([":star:" for i in range(0, JSONWeapon["rarity"])])
             RarityColors = Colors[JSONWeapon["rarity"]]
             
             #Print
-            Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+            Show = discord.Embed(title=Name, description=Descriptions, color=RarityColors)
             Show.set_thumbnail(url="https://api.genshin.dev/weapons/{}/icon".format(Weapon))
             Show.add_field(name="Type", value=JSONWeapon["type"])
             Show.add_field(name="Base Attack", value=JSONWeapon["baseAttack"])
@@ -71,11 +71,11 @@ class GenshinWiki(commands.Cog):
         try:
             #Initialization
             Name = JSONArtifacts["name"]
-            Descriptons = "Rarity Max : " + "".join([":star:" for i in range(0, JSONArtifacts["max_rarity"])])
+            Descriptions = "Rarity Max : " + "".join([":star:" for i in range(0, JSONArtifacts["max_rarity"])])
             RarityColors = Colors[JSONArtifacts["max_rarity"]]
             
             #Print
-            Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+            Show = discord.Embed(title=Name, description=Descriptions, color=RarityColors)
             Show.set_thumbnail(url="https://api.genshin.dev/artifacts/{}/flower-of-life".format(Artifacts))
             Show.add_field(name="2-Piece Bonus", value=JSONArtifacts["2-piece_bonus"], inline=False)
             Show.add_field(name="4-Piece Bonus", value=JSONArtifacts["4-piece_bonus"], inline=False)
@@ -112,11 +112,11 @@ class GenshinWiki(commands.Cog):
         try:
             #Initialization
             Name = JSONChars["name"]
-            Descriptons = "Rarity : " + "".join([":star:" for i in range(0, JSONChars["rarity"])])
+            Descriptions = "Rarity : " + "".join([":star:" for i in range(0, JSONChars["rarity"])])
             RarityColors = Colors[JSONChars["vision"]]
             
             #Print
-            Show = discord.Embed(title=Name, description=Descriptons, color=RarityColors)
+            Show = discord.Embed(title=Name, description=Descriptions, color=RarityColors)
             Show.set_thumbnail(url="https://api.genshin.dev/characters/{}/icon".format(Chars))
             Show.add_field(name="Vision", value=JSONChars["vision"])
             Show.add_field(name="Weapon", value=JSONChars["weapon"])
