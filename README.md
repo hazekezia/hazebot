@@ -30,6 +30,7 @@ Commands | Description
 hz.resin | Check your resin.
 hz.realm | Check your realm currency.
 hz.hoyoclaim | Claim your daily reward from HoyoLab
+hz.exp | Show your current expeditions
 hz.resintimer `<current resin>` `<desired resin>` | Set resin timer.
 
 ### Miscellaneous
