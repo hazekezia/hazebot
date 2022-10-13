@@ -3,6 +3,7 @@ import asyncio
 from datetime import datetime
 from pytz import timezone
 from discord.ext import commands
+import discord
 
 from database import connecting_db
 
@@ -174,8 +175,8 @@ class GenshinStats(commands.Cog):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
             return
         
-    #RealmCurrencyCheck
-    @commands.command(brief="Show your current realm currency")
+    #Expeditions
+    @commands.command(brief="Show your current expeditions")
     async def exp(self, ctx):
         db = connecting_db()
         cursor = db.cursor(buffered=True)
@@ -206,7 +207,11 @@ class GenshinStats(commands.Cog):
 
             result = '\n'.join(f'{x}. {y}' for x, y in make.items())
 
-            await ctx.send("Expedition progress for *{}* - AR{}\n\n{}".format(nickname,level,result))
+            Name = "Expeditions Progress"
+            showEmbed = discord.Embed(title=Name)
+            showEmbed.add_field(name="*{}* - AR{}".format(nickname,level), value=result)
+
+            await ctx.send(embed=showEmbed)
             return
         elif (cursor.rowcount <= 0):
             await ctx.send("You are not in database! Please add yourself with **hz.addme** command.")
