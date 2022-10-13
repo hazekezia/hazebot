@@ -3,3 +3,4 @@ bot\__pycache__
 *.pyc
 notes.txt
 experiments
+bot/_TestField.py
